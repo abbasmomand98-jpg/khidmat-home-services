@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Khidmat — find verified home-service pros in Pakistan. Electricians, plumbers, AC technicians and more, with fixed upfront prices and a fair-price checker.">
+  <title>Khidmat — Verified Home Services Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <header class="header">
+    <div class="hello">Verified home services · Pakistan</div>
+    <h1>Khidmat <span class="accent">🔧</span></h1>
+    <div class="sub">Trusted pros, fixed prices, no bargaining stress.</div>
+  </header>
+
+  <!-- ============ HOME ============ -->
+  <section class="view active" id="view-home">
+    <div class="banner">
+      <div class="banner-title">❄️ Winter prep season</div>
+      <p>Sardi se pehle geyser ki service aur gas safety check karwa lein — November mein slots bhar jatay hain.</p>
+      <div id="winter-list"></div>
+      <button class="btn light" id="winter-cta">Find a geyser pro →</button>
+    </div>
+
+    <div class="search-wrap">
+      <span class="icon">🔍</span>
+      <input type="text" id="search" placeholder="Search pros, e.g. Imran or Plumber…" autocomplete="off">
+    </div>
+
+    <div class="row">
+      <div class="grow">
+        <label for="city-select">City</label>
+        <select id="city-select"></select>
+      </div>
+      <div class="grow">
+        <label for="area-select">Area</label>
+        <select id="area-select"></select>
+      </div>
+    </div>
+
+    <div class="section-title">🛠 What do you need fixed?</div>
+    <div id="category-grid" class="cat-grid"></div>
+
+    <div class="card trust-card">
+      <h2>Why Khidmat?</h2>
+      <div class="trust-row"><span>🪪</span><div><strong>ID-verified pros</strong><div class="muted">CNIC checked before anyone goes live.</div></div></div>
+      <div class="trust-row"><span>🧰</span><div><strong>Skill-tested</strong><div class="muted">Practical trade test, not just a profile photo.</div></div></div>
+      <div class="trust-row"><span>💰</span><div><strong>Upfront estimate</strong><div class="muted">You see the total before the pro rings your bell.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ PROS ============ -->
+  <section class="view" id="view-pros">
+    <div class="row">
+      <div class="grow">
+        <label for="service-filter">Service</label>
+        <select id="service-filter"></select>
+      </div>
+      <div class="grow">
+        <label for="sort-select">Sort by</label>
+        <select id="sort-select">
+          <option value="rating">★ Highest rated</option>
+          <option value="price">₨ Cheapest visit</option>
+          <option value="distance">📍 Nearest</option>
+        </select>
+      </div>
+    </div>
+    <div class="muted" id="pros-count" style="margin:6px 2px 10px;"></div>
+    <div id="pros-list"></div>
+  </section>
+
+  <!-- ============ PRO DETAIL ============ -->
+  <section class="view" id="view-detail">
+    <button class="back-btn" data-goto="view-pros">← Back to pros</button>
+    <div id="detail-body"></div>
+  </section>
+
+  <!-- ============ BOOKING FLOW ============ -->
+  <section class="view" id="view-book">
+    <button class="back-btn" data-goto="view-detail">← Back to pro</button>
+    <div id="book-body"></div>
+  </section>
+
+  <!-- ============ RECEIPT ============ -->
+  <section class="view" id="view-receipt">
+    <div id="receipt-body"></div>
+  </section>
+
+  <!-- ============ INSAF METER ============ -->
+  <section class="view" id="view-meter">
+    <div class="card">
+      <h2>⚖️ Insaf Meter</h2>
+      <p class="muted">Kisi mistri ne quote diya? Yahan check karein ke rate munasib hai ya loot — standard market range ke khilaaf.</p>
+      <label for="meter-service">Service</label>
+      <select id="meter-service"></select>
+      <label for="meter-job">Job</label>
+      <select id="meter-job"></select>
+      <div class="range-note" id="meter-range"></div>
+      <label for="meter-quote">Quoted price (₨)</label>
+      <input type="number" id="meter-quote" min="0" placeholder="e.g. 2500">
+      <div style="margin-top:14px;">
+        <button class="btn" id="meter-check">Check fairness</button>
+      </div>
+      <div id="meter-error" class="muted" style="color:var(--bad); margin-top:10px; display:none;"></div>
+    </div>
+    <div class="card" id="meter-result-card" style="display:none;">
+      <h2>Verdict</h2>
+      <div class="verdict-box" id="meter-verdict"></div>
+    </div>
+  </section>
+
+  <!-- ============ MY BOOKINGS ============ -->
+  <section class="view" id="view-bookings">
+    <div class="section-title">📋 My bookings</div>
+    <div id="bookings-list"></div>
+  </section>
+</div>
+
+<!-- Bottom tab bar -->
+<nav class="tabbar" aria-label="Main navigation">
+  <button class="tab active" data-view="view-home"><span class="ticon">🏠</span>Home</button>
+  <button class="tab" data-view="view-pros"><span class="ticon">🛠</span>Pros</button>
+  <button class="tab" data-view="view-meter"><span class="ticon">⚖️</span>Insaf Meter</button>
+  <button class="tab" data-view="view-bookings"><span class="ticon">📋</span>Bookings</button>
+</nav>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
